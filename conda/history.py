@@ -150,6 +150,8 @@ class History(object):
           - "python>=3.5.1,jupyter >=1.0.0,<2.0,matplotlib >=1.5.1,<2.0"
         """
         specs = []
+        if ',,' in specs_string:
+            specs_string.replace(',,',',')
         for spec in specs_string.split(','):
             # See https://github.com/conda/conda/issues/6691
             if spec[0].isalpha():
