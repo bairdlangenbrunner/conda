@@ -151,7 +151,7 @@ class History(object):
         """
         specs = []
         if ',,' in specs_string:
-            specs_string.replace(',,',',')
+            specs_string = specs_string.replace(',,',',')
         for spec in specs_string.split(','):
             # See https://github.com/conda/conda/issues/6691
             # ALSO fixed to check that spec doesn't have zero length
