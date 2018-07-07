@@ -150,17 +150,17 @@ class History(object):
           - "python>=3.5.1,jupyter >=1.0.0,<2.0,matplotlib >=1.5.1,<2.0"
         """
         specs = []
-        if ',,' in specs_string:
-            specs_string = specs_string.replace(',,',',')
         for spec in specs_string.split(','):
             # See https://github.com/conda/conda/issues/6691
-            if spec[0].isalpha():
-                # A valid spec starts with a letter since it is a package name
-                specs.append(spec)
-            else:
-                # Otherwise it is a condition and has to be appended to the
-                # last valid spec on the specs list
-                specs[-1] = ','.join([specs[-1], spec])
+            # ALSO fixed to check that spec doesn't have zero length
+            if spec.__len__()>0:
+                if spec[0].isalpha():
+                    # A valid spec starts with a letter since it is a package name
+                    specs.append(spec)
+                else:
+                    # Otherwise it is a condition and has to be appended to the
+                    # last valid spec on the specs list
+                    specs[-1] = ','.join([specs[-1], spec])
 
         return specs
 
