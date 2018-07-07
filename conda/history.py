@@ -150,6 +150,11 @@ class History(object):
           - "python>=3.5.1,jupyter >=1.0.0,<2.0,matplotlib >=1.5.1,<2.0"
         """
         specs = []
+<<<<<<< HEAD
+=======
+        if ',,' in specs_string:
+            specs_string.replace(',,',',')
+>>>>>>> parent of f885ea024... update history.py to fix failed installs/upgrades
         for spec in specs_string.split(','):
             # See https://github.com/conda/conda/issues/6691
             # ALSO fixed to check that spec doesn't have zero length
